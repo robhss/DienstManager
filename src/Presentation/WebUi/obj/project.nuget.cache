@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "GwN+uuhgHy+4+/iXI8WoS4JBabbZ5nRUE+SSfRBLNSr8lQ7zu75QgWpD7DZbo5yndM5Ore0T9TQpWAZ2BacXIw==",
+  "success": true,
+  "projectFilePath": "/Users/robinhess/RiderProjects/DienstManager/src/Presentation/WebUi/WebUi.csproj",
+  "expectedPackageFiles": [
+    "/Users/robinhess/.nuget/packages/mediatr/12.2.0/mediatr.12.2.0.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/mediatr.contracts/2.0.1/mediatr.contracts.2.0.1.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.authorization/8.0.3/microsoft.aspnetcore.authorization.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.components/8.0.3/microsoft.aspnetcore.components.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.components.analyzers/8.0.3/microsoft.aspnetcore.components.analyzers.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.components.forms/8.0.3/microsoft.aspnetcore.components.forms.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.components.web/8.0.3/microsoft.aspnetcore.components.web.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.aspnetcore.metadata/8.0.3/microsoft.aspnetcore.metadata.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.dependencyinjection/8.0.0/microsoft.extensions.dependencyinjection.8.0.0.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.1/microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.localization/8.0.3/microsoft.extensions.localization.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.localization.abstractions/8.0.3/microsoft.extensions.localization.abstractions.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.logging/8.0.0/microsoft.extensions.logging.8.0.0.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.logging.abstractions/8.0.1/microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.options/8.0.2/microsoft.extensions.options.8.0.2.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/microsoft.jsinterop/8.0.3/microsoft.jsinterop.8.0.3.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/mudblazor/6.19.1/mudblazor.6.19.1.nupkg.sha512",
+    "/Users/robinhess/.nuget/packages/system.io.pipelines/8.0.0/system.io.pipelines.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
