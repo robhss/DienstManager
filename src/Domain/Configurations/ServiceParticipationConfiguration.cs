@@ -9,6 +9,9 @@ public class ServiceParticipationConfiguration : IEntityTypeConfiguration<Servic
     public void Configure(EntityTypeBuilder<ServiceParticipation> builder)
     {
         builder
+            .HasKey(sp => new { sp.ServiceId, sp.UserId });
+        
+        builder
             .HasOne(sp => sp.User)
             .WithMany(u => u.Participations)
             .HasForeignKey(sp => sp.UserId);

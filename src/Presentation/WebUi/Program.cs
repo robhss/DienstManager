@@ -1,12 +1,21 @@
+using System.Reflection;
+using Application;
 using DienstManager.Components;
 using Domain;
 using Domain.Common.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using MudBlazor.Services;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<IApplicationDbContext, ApplicationDbContext>();
+builder.Services.AddDbContext<IApplicationDbContext, ApplicationDbContext>( options => options
+    .UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDatabase")));
+
+builder.Services.AddApplicationServices();
+
+builder.Services.AddMudServices();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
