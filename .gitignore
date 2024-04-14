@@ -1,1 +1,10 @@
 .idea/
+
+src/Presentation/WebUi/bin/
+src/Presentation/WebUi/obj/
+src/Presentation/Application/bin/
+src/Presentation/Application/obj/
+src/Presentation/Infrastructure/bin/
+src/Presentation/Infrastructure/obj/
+src/Presentation/Domain/bin/
+src/Presentation/Domain/obj/
