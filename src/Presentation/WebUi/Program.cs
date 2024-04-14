@@ -1,9 +1,12 @@
 using DienstManager.Components;
+using Domain;
+using Domain.Common.Interfaces;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<IApplicationDbContext, ApplicationDbContext>();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 

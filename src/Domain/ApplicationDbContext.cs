@@ -7,7 +7,7 @@ namespace Domain;
 
 public class ApplicationDbContext: DbContext, IApplicationDbContext
 {
-    public DbSet<User> Users;
+    public DbSet<User> Users { get; set; }
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
