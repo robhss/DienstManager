@@ -1,8 +1,9 @@
+using Domain.Common;
 using MediatR;
 
 namespace Domain.Events.User;
 
-public class UserDeletedEvent : INotification
+public class UserDeletedEvent : BaseEvent
 {
     public Entities.User User;
     

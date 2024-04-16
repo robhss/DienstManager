@@ -1,9 +1,10 @@
 using System.Runtime.CompilerServices;
+using Domain.Common;
 using MediatR;
 
 namespace Domain.Events.User;
 
-public class UserCreatedEvent : INotification
+public class UserCreatedEvent : BaseEvent
 {
     public Entities.User User;
     
