@@ -8,3 +8,5 @@ src/Infrastructure/bin/
 src/Infrastructure/obj/
 src/Domain/bin/
 src/Domain/obj/
+
+*.DS_Store
