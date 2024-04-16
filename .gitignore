@@ -1,12 +1,26 @@
 .idea/
 
-src/Presentation/WebUi/bin/
-src/Presentation/WebUi/obj/
-src/Application/bin/
-src/Application/obj/
-src/Infrastructure/bin/
-src/Infrastructure/obj/
-src/Domain/bin/
-src/Domain/obj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 
 *.DS_Store
+
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+
+project.lock.json
+project.fragment.lock.json
+artifacts/
