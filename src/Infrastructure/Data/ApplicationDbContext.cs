@@ -1,9 +1,9 @@
 using System.Reflection;
-using Domain.Common.Interfaces;
+using Application.Common.Interfaces;
 using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Domain;
+namespace Infrastructure.Data;
 
 public class ApplicationDbContext: DbContext, IApplicationDbContext
 {

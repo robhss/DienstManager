@@ -2,7 +2,7 @@ using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Domain.Configurations;
+namespace Infrastructure.Data.Configurations;
 
 public class ServiceConfiguration : IEntityTypeConfiguration<Service>
 {

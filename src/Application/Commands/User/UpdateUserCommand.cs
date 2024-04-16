@@ -1,4 +1,4 @@
-using Domain.Common.Interfaces;
+using Application.Common.Interfaces;
 using MediatR;
 
 namespace Application.Commands.User;
