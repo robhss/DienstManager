@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<IApplicationDbContext, ApplicationDbContext>( options => options
     .UseSqlServer(builder.Configuration.GetConnectionString("ApplicationDatabase")));
 
-builder.Services.AddApplicationServices();
+builder.Services.AddApplication();
 
 builder.Services.AddMudServices();
 builder.Services.AddRazorComponents()
