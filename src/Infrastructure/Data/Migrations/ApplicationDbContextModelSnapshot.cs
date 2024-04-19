@@ -46,21 +46,6 @@ namespace Infrastructure.Migrations
                     b.ToTable("Services");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ServiceParticipation", b =>
-                {
-                    b.Property<Guid>("ServiceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ServiceId", "UserId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ServiceParticipations");
-                });
-
             modelBuilder.Entity("Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -100,33 +85,34 @@ namespace Infrastructure.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Domain.Entities.ServiceParticipation", b =>
+            modelBuilder.Entity("ServiceUser", b =>
                 {
-                    b.HasOne("Domain.Entities.Service", "Service")
-                        .WithMany("Participations")
-                        .HasForeignKey("ServiceId")
+                    b.Property<Guid>("ParticipantsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ServiceParticipationsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ParticipantsId", "ServiceParticipationsId");
+
+                    b.HasIndex("ServiceParticipationsId");
+
+                    b.ToTable("ServiceUser");
+                });
+
+            modelBuilder.Entity("ServiceUser", b =>
+                {
+                    b.HasOne("Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("ParticipantsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Entities.User", "User")
-                        .WithMany("Participations")
-                        .HasForeignKey("UserId")
+                    b.HasOne("Domain.Entities.Service", null)
+                        .WithMany()
+                        .HasForeignKey("ServiceParticipationsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Service");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Domain.Entities.Service", b =>
-                {
-                    b.Navigation("Participations");
-                });
-
-            modelBuilder.Entity("Domain.Entities.User", b =>
-                {
-                    b.Navigation("Participations");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Domain.Events.User;
 using MediatR;
 
 namespace Application.Commands.User;
@@ -15,7 +16,7 @@ public record CreateUserCommand : IRequest
 
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
 {
-    private IApplicationDbContext _dbContext;
+    private readonly IApplicationDbContext _dbContext;
 
     public CreateUserCommandHandler(IApplicationDbContext dbContext)
     {
@@ -27,7 +28,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
         
         //todo: encrypt password
 
-        var user = new Domain.Entities.User
+        var entity = new Domain.Entities.User
         {
             //Id = default,
             //CreatedOn = default,
@@ -39,7 +40,10 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
             Surname = request.SurName,
             //Participations = null
         };
-        _dbContext.Users.Add(user);
+
+        entity.AddDomainEvent(new UserCreatedEvent(entity));
+        
+        _dbContext.Users.Add(entity);
 
         await _dbContext.SaveChangesAsync(cancellationToken);
     }
