@@ -9,6 +9,6 @@ public class User : BaseEntity
     public string Email { get; set; }
     public string? Name { get; set; }
     public string? Surname { get; set; }
-    
-    public List<ServiceParticipation>? Participations { get; set; }
+
+    public List<Service>? ServiceParticipations { get; set; } = [];
 }

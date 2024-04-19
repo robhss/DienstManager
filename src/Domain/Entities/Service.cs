@@ -8,5 +8,5 @@ public class Service : BaseEntity
     public DateTime? Date { get; set; }
     public string? Topic { get; set; }
     
-    public List<ServiceParticipation>? Participations { get; set; }
+    public List<User> Participants { get; set; } = [];
 }
