@@ -4,6 +4,7 @@ using System.Security.Authentication.ExtendedProtection;
 using Application.Commands.User;
 using Application.Common.Behaviors;
 using Application.Common.Interfaces;
+using Domain.Entities;
 using Infrastructure.Data;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -52,10 +53,35 @@ public class UserCommandTests : IDisposable, IAsyncDisposable
             Password = "1234",
             Email = "test@test.com",
             Name = "max",
-            SurName = "musterman"
+            Surname = "musterman"
+        });
+        Assert.NotNull(_dbContext.Users.First(u => u.Username == "Test"));
+    }
+
+    [Fact]
+    public async Task UpdateUserTest()
+    {
+        var user = await _dbContext.Users.FirstAsync(u => u.Username == "Test");
+
+        await _mediator.Send(new UpdateUserCommand
+        {
+            UserId = user.Id,
+            Name = "harald",
         });
 
-        Assert.NotNull(_dbContext.Users.First(u => u.Username == "Test"));
+        var expected = new User
+        {
+            Username = "Test",
+            Password = "1234",
+            Email = "test@test.com",
+            Name = "max",
+            Surname = "musterman"
+        };
+
+        var result = await _dbContext.Users.FindAsync(user.Id);
+        
+        Assert.Equal(expected.Email, result.Email);
+        Assert.Equal("harald", result.Name);
     }
 
 }

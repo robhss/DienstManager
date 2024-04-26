@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Domain.Events.User;
 using MediatR;
 
 namespace Application.Commands.User;
@@ -7,16 +8,16 @@ public record UpdateUserCommand : IRequest
 {
     public Guid UserId { get; init; }
     public string? Username { get; init; }
-    public string? Password { get; set; }
+    public string? Password { get; init; }
     public string? Email { get; init; }
     public string? Name { get; init; }
-    public string? SurName { get; init; }
+    public string? Surname { get; init; }
     
 }
 
 public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
 {
-    private IApplicationDbContext _dbContext;
+    private readonly IApplicationDbContext _dbContext;
 
     public UpdateUserCommandHandler(IApplicationDbContext dbContext)
     {
@@ -26,9 +27,18 @@ public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand>
     public async Task Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
 
-        var user = await _dbContext.Users.FindAsync(new object?[] { request.UserId } , cancellationToken);
+        var entity = await _dbContext.Users.FindAsync(new object?[] { request.UserId } , cancellationToken);
+
+        if (entity != null)
+        {
+            entity.AddDomainEvent(new UserUpdatedEvent(entity));
+            if (request.Username != null) entity.Username = request.Username;
+            if (request.Password != null) entity.Password = request.Password;
+            if (request.Email != null) entity.Email = request.Email;
+            if (request.Name != null) entity.Name = request.Name;
+            if (request.Surname != null) entity.Surname = request.Surname;
+        }
         
-        //todo: update User
         
         await _dbContext.SaveChangesAsync(cancellationToken);
     }

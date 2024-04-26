@@ -19,5 +19,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(u => u.Surname)
             .HasMaxLength(200);
+
+        builder.HasMany(u => u.ServiceParticipations)
+            .WithMany(s => s.Participants);
     }
 }

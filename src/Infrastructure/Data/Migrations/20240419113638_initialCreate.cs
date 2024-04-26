@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class initialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -45,40 +45,40 @@ namespace Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ServiceParticipations",
+                name: "ServiceUser",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ServiceId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ParticipantsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ServiceParticipationsId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ServiceParticipations", x => new { x.ServiceId, x.UserId });
+                    table.PrimaryKey("PK_ServiceUser", x => new { x.ParticipantsId, x.ServiceParticipationsId });
                     table.ForeignKey(
-                        name: "FK_ServiceParticipations_Services_ServiceId",
-                        column: x => x.ServiceId,
+                        name: "FK_ServiceUser_Services_ServiceParticipationsId",
+                        column: x => x.ServiceParticipationsId,
                         principalTable: "Services",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ServiceParticipations_Users_UserId",
-                        column: x => x.UserId,
+                        name: "FK_ServiceUser_Users_ParticipantsId",
+                        column: x => x.ParticipantsId,
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceParticipations_UserId",
-                table: "ServiceParticipations",
-                column: "UserId");
+                name: "IX_ServiceUser_ServiceParticipationsId",
+                table: "ServiceUser",
+                column: "ServiceParticipationsId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ServiceParticipations");
+                name: "ServiceUser");
 
             migrationBuilder.DropTable(
                 name: "Services");

@@ -1,4 +1,5 @@
 using Application.Common.Interfaces;
+using Domain.Events.User;
 using MediatR;
 
 namespace Application.Commands.User;
@@ -19,13 +20,14 @@ public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand>
     
     public async Task Handle(DeleteUserCommand request, CancellationToken cancellationToken)
     {
-        var user = await _dbContext.Users.FindAsync(new object?[] { request.UserId } , cancellationToken);
+        var entity = await _dbContext.Users.FindAsync(new object?[] { request.UserId } , cancellationToken);
 
-        if (user != null)
+        if (entity != null)
         {
-            _dbContext.Users.Remove(user);
+            entity.AddDomainEvent(new UserDeletedEvent(entity));
+            _dbContext.Users.Remove(entity);
         }
-
+        
         await _dbContext.SaveChangesAsync(cancellationToken);
 
     }
