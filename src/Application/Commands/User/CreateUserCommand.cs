@@ -10,7 +10,7 @@ public record CreateUserCommand : IRequest
     public string Password { get; set; }
     public string Email { get; init; }
     public string? Name { get; init; }
-    public string? SurName { get; init; }
+    public string? Surname { get; init; }
     
 }
 
@@ -37,7 +37,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand>
             Password = request.Password,
             Email = request.Email,
             Name = request.Name,
-            Surname = request.SurName,
+            Surname = request.Surname,
             //Participations = null
         };
 
