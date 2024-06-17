@@ -1,0 +1,43 @@
+@page "/"
+@using System.ComponentModel.DataAnnotations
+@using DienstManager.Components.Layout
+
+@inject NavigationManager NavManager
+
+@layout LoginLayout
+
+<PageTitle>Login</PageTitle>
+
+
+<EditForm Model="@_loginModel" OnValidSubmit="OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h3">Login</MudText>
+            <MudTextField @bind-Value="_loginModel.Username" For="@(() => _loginModel.Username)" Label="Username" Variant="Variant.Outlined"></MudTextField>
+            <MudTextField @bind-Value="_loginModel.Password" For="@(() => _loginModel.Password)" Label="Password" Variant="Variant.Outlined"></MudTextField>
+        </MudCardContent>
+        <MudCardActions>
+            <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Login</MudButton>
+        </MudCardActions>
+    </MudCard>
+</EditForm>
+
+@code {
+
+    LoginForm _loginModel = new LoginForm();
+
+    public class LoginForm
+    {
+        [Required]
+        public string? Username { get; set; }
+        [Required]
+        public string? Password { get; set; }
+    }
+    
+    private void OnValidSubmit(EditContext context)
+    {  
+        NavManager.NavigateTo("/home");
+    }
+
+}
